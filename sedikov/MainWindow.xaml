@@ -1,0 +1,95 @@
+﻿<Window x:Class="sedikov.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sedikov"
+        mc:Ignorable="d"
+        Title="Применение закона Ома" Height="420" Width="800">
+
+    <Grid Margin="0,0,0,4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="0,0,1,0">
+            <Grid Margin="15,15,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="lblValue1" Grid.Column="0" Text="Напряжение(Вольт)" 
+                               FontWeight="Bold" FontSize="14" VerticalAlignment="Center"
+                               MinWidth="150"/>
+                    <TextBox x:Name="txtValue1" Grid.Column="1" Width="200" Height="30" 
+                             HorizontalAlignment="Right" FontSize="14" Padding="5" 
+                             VerticalContentAlignment="Center" TextAlignment="Right"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="lblValue2" Grid.Column="0" Text="Сопротивление(Ом)" 
+                               FontWeight="Bold" FontSize="14" VerticalAlignment="Center"
+                               MinWidth="150"/>
+                    <TextBox x:Name="txtValue2" Grid.Column="1" Width="200" Height="30" 
+                             HorizontalAlignment="Right" FontSize="14" Padding="5" 
+                             VerticalContentAlignment="Center" TextAlignment="Right"/>
+                </Grid>
+
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,63,0,192">
+                    <TextBlock x:Name="lblSelectedValue" Text="Сила тока" FontSize="14" FontWeight="Bold" 
+                               VerticalAlignment="Center"/>
+                    <TextBlock Text=" = " FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="lblResult" Text="" FontSize="14" FontWeight="Bold" 
+                               Foreground="black" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="15,15,15,6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" BorderBrush="black" BorderThickness="1" CornerRadius="0" 
+                    Background="White" Padding="10" Margin="0,0,0,5">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="2" Opacity="0.2"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="Вычисляемая величина" FontWeight="Bold" FontSize="14" 
+                               TextAlignment="Center" Margin="0,0,0,10"/>
+
+                    <RadioButton x:Name="rbCurrent" Content="Сила тока" GroupName="CalcType" 
+                                 FontSize="13" Margin="5,5" IsChecked="True" 
+                                 Checked="RadioButton_Checked"/>
+
+                    <RadioButton x:Name="rbVoltage" Content="Напряжение" GroupName="CalcType" 
+                                 FontSize="13" Margin="5,5" 
+                                 Checked="RadioButton_Checked"/>
+
+                    <RadioButton x:Name="rbResistance" Content="Сопротивление" GroupName="CalcType" 
+                                 FontSize="13" Margin="5,5" 
+                                 Checked="RadioButton_Checked"/>
+                </StackPanel>
+            </Border>
+
+            <Button x:Name="btnCalculate" Grid.Row="1" Content="Вычислить" 
+                    Background="white" Foreground="black" FontSize="14" FontWeight="Bold"
+                    Height="30" Margin="10,25,265,-5" Click="BtnCalculate_Click"/>
+        </Grid>
+    </Grid>
+</Window>
